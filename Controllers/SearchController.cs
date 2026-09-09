@@ -9,6 +9,9 @@ public class SearchController : ControllerBase
 {
     private const string Conn = "Server=db;Database=app;User Id=app;Password=secret;";
 
+    [HttpGet("health")]
+    public IActionResult Health() => Ok("ok");
+
     [HttpGet]
     public IActionResult Get([FromQuery] string q)
     {
