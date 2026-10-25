@@ -17,8 +17,9 @@ public class SearchController : ControllerBase
     {
         using var c = new SqlConnection(Conn);
         c.Open();
-        var sql = "SELECT Id, Name FROM Items WHERE Name LIKE '%" + q + "%'";
+        var sql = "SELECT Id, Name FROM Items WHERE Name LIKE @q";
         using var cmd = new SqlCommand(sql, c);
+        cmd.Parameters.AddWithValue("@q", "%" + q + "%");
         using var r = cmd.ExecuteReader();
         var names = new List<string>();
         while (r.Read()) names.Add(r.GetString(1));
