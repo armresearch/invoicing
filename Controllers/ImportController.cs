@@ -12,7 +12,7 @@ public class ImportController : ControllerBase
     {
         var settings = new JsonSerializerSettings
         {
-            TypeNameHandling = TypeNameHandling.All
+            TypeNameHandling = TypeNameHandling.None
         };
         var obj = JsonConvert.DeserializeObject<object>(body, settings);
         return Ok(obj?.ToString());
