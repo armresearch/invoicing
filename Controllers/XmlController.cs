@@ -11,7 +11,7 @@ public class XmlController : ControllerBase
     public IActionResult Post([FromBody] string body)
     {
         var doc = new XmlDocument();
-        doc.XmlResolver = new XmlUrlResolver();
+        doc.XmlResolver = null;
         doc.LoadXml(body);
         return Ok(doc.DocumentElement?.Name);
     }
