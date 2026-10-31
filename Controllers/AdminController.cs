@@ -8,6 +8,7 @@ namespace Invoicing.Controllers;
 [Authorize]
 public class AdminController : ControllerBase
 {
+    [Authorize(Roles = "Admin")]
     [HttpPost("delete-user")]
     public IActionResult DeleteUser([FromQuery] int id)
     {
