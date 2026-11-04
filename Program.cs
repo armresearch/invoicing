@@ -4,6 +4,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddAuthentication("Basic");
 
 var app = builder.Build();
+app.UseHsts();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
