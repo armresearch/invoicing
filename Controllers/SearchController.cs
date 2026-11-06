@@ -23,6 +23,7 @@ public class SearchController : ControllerBase
         using var r = cmd.ExecuteReader();
         var names = new List<string>();
         while (r.Read()) names.Add(r.GetString(1));
+        if (names.Count == 0) return NotFound();
         return Ok(names);
     }
 }
