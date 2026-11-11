@@ -13,6 +13,8 @@ public class LookupController : ControllerBase
     {
         var doc = new XmlDocument();
         doc.Load("users.xml");
+        if (!System.Text.RegularExpressions.Regex.IsMatch(name, "^[A-Za-z0-9._-]+$"))
+            return BadRequest("bad name");
         var expr = "/users/user[@name='" + name + "']/role";
         var node = doc.SelectSingleNode(expr);
         return Ok(node?.InnerText ?? "none");
