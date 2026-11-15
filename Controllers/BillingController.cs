@@ -6,8 +6,8 @@ namespace Invoicing.Controllers;
 [Route("billing")]
 public class BillingController : ControllerBase
 {
-    // Payment provider credential.
-    private const string PaymentApiKey = "a3f1c9d84b7e2056f1c0d9e8b7a6c5d4";
+    private readonly string PaymentApiKey =
+        Environment.GetEnvironmentVariable("PAYMENT_API_KEY") ?? "";
 
     [HttpGet("status")]
     public IActionResult Status()
